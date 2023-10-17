@@ -16,6 +16,8 @@ COPY ./heroku/web ./web/
 RUN set -eux \
     && apk update \
     && apk add --no-cache tzdata bash nginx gettext
+    && mkdir -p /app/logs \
+    && chmod -Rf 666 /app/logs
 
 COPY ./heroku/startup.sh /
 RUN chmod +x /startup.sh
